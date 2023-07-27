@@ -1,3 +1,6 @@
 db:
-  url: 'localhost'
-  user: 'root'
+  host: 'localhost'
+  username: 'root'
+  type: 'mysql'
+  database: 'test'
+  synchronize: false
