@@ -2,5 +2,5 @@ db:
   host: 'localhost'
   username: 'root'
   type: 'mysql'
-  database: 'test'
+  database: 'main'
   synchronize: false

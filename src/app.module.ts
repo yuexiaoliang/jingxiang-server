@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from 'config/configuration';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PointModule } from './point/point.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -30,6 +32,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
 
     UserModule,
+
+    PointModule,
+
+    OrderModule,
   ],
   controllers: [],
   providers: [],
