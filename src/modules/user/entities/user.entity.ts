@@ -1,20 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
+import { UserProfileEntity } from './user-profile.entity';
 
 @Entity()
-export class User {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'open_id', unique: true, comment: '小程序 OpenID' })
-  openId: string;
+  @Column({ unique: true, comment: '用户名' })
+  username: string;
 
-  @Column({
-    name: 'union_id',
-    unique: true,
-    nullable: true,
-    comment: '小程序 UnionID',
-  })
-  unionId: string;
+  @Column({ comment: '密码' })
+  password: string;
 
   @Column({ unique: true, comment: '联系方式' })
   contact: string;
@@ -36,27 +38,10 @@ export class User {
   })
   updateTime: Date;
 
-  @Column({
-    name: 'account_balance',
-    type: 'decimal',
-    precision: 10,
-    scale: 2,
-    default: 0,
-    comment: '账户余额',
-  })
-  accountBalance: number;
-
-  @Column({
-    name: 'total_study_time',
-    type: 'integer',
-    default: 0,
-    comment: '累计学习时长/分钟',
-  })
-  totalStudyTime: number;
-
-  @Column({ type: 'integer', default: 0, comment: '积分' })
-  points: number;
-
   @Column({ type: 'integer', default: 1, comment: '状态：0 停用 1 可用' })
   status: number;
+
+  @OneToOne(() => UserProfileEntity, (profile) => profile.user)
+  @JoinColumn()
+  profile: UserProfileEntity;
 }
