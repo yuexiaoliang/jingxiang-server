@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { ApiTags, ApiBody, ApiResponse } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { CreateUserRequestBodyDto, UserDto } from './user.dto';
+import { CreateUserRequestBodyDto, UserDto } from './dto/user.dto';
 
+@ApiTags('user')
 @Controller('user')
-@ApiTags('用户')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('users')
+  @Get()
   @ApiResponse({ type: [UserDto] })
-  getUsers() {
-    return this.userService.getUsers();
+  findAll() {
+    return this.userService.findAll();
   }
 
-  @Post('create')
+  @Post()
   @ApiBody({ type: CreateUserRequestBodyDto })
   @ApiResponse({
     status: 201,

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { OrderType } from './order.entity';
+import { OrderType } from '../entities/order.entity';
 
 export class CreateOrderRequestBodyDto {
   @ApiProperty({ enum: OrderType })

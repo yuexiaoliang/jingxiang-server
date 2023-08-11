@@ -1,0 +1,4 @@
+db:
+  port: 3060
+  password: 'sUff4iC5q7UhlXY'
+  synchronize: false

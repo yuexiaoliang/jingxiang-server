@@ -1,9 +1,8 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { Body, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { Order } from './order.entity';
-import { ApiResponse } from '@nestjs/swagger';
-import { CreateOrderRequestBodyDto } from './order.dto';
+import { Order } from './entities/order.entity';
+import { CreateOrderRequestBodyDto } from './dto/order.dto';
 
 @Injectable()
 export class OrderService {

@@ -1,20 +1,20 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { OrderService } from './order.service';
-import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreateOrderRequestBodyDto, Order } from './order.dto';
+import { CreateOrderRequestBodyDto, Order } from './dto/order.dto';
 
-@Controller('order')
 @ApiTags('order')
+@Controller('order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Get('all')
+  @Get()
   @ApiResponse({ type: [Order] })
   findAll() {
     return this.orderService.findAll();
   }
 
-  @Post('create')
+  @Post()
   @ApiResponse({
     status: 201,
     description: '创建成功',
